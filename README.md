@@ -4,3 +4,4 @@ Please can all Team members indicate their agreement below that the minutes uplo
 
 - All is correct 👍 Jason.H.
 - Looks good to me :) 👍 Jer
+- yes its ok 👍 Marco
