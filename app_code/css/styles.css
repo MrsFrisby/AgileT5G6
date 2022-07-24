@@ -1,0 +1,724 @@
+@charset "UTF-8";
+/* CSS Document */
+
+@font-face {
+  font-family: Montserrat-Medium;
+  src: url("../assets/fonts/Montserrat/Montserrat-Medium.ttf");
+  /*src: url(data:font/ttf;base64,STRING) format('truetype');*/
+}
+
+@font-face {
+  font-family: Montserrat-SemiBold;
+  src: url("../assets/fonts/Montserrat/Montserrat-SemiBold.ttf");
+  /*src: url(data:font/ttf;base64,STRING) format('truetype');*/
+}
+
+/* Default theme (light) */ 
+:root {
+  --background_default: #fefefe;
+  --text_default: #000000;
+  --text_subtitle: #b3b2b2;
+  --text_placeholder: #c4c4c5;
+  --design_seporator: #c4c4c5;
+  --design_button: #777777;
+  --design_cover: rgba(0,0,0,0.3);
+  --shadow_cell: rgba(120,120,120,0.1);
+  --shadow_button: rgba(120,120,120,0.3);
+  --fadeout_cover_0: rgba(254,254,254,0.0);
+  --fadeout_cover_1: rgba(254,254,254,1.0);
+}
+
+html, body{
+
+	background-color: var(--background_default);
+	/*background-color: rgba(0,0,0,0);*/
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	font-family: Montserrat-Medium;
+
+	-webkit-tap-highlight-color:  rgba(255, 255, 255, 0); 
+
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Safari */
+	 -khtml-user-select: none; /* Konqueror HTML */
+	   -moz-user-select: none; /* Old versions of Firefox */
+		-ms-user-select: none; /* Internet Explorer/Edge */
+			user-select: none; /* Non-prefixed version, currently
+								  supported by Chrome, Edge, Opera and Firefox */
+}
+
+input.middle:focus {
+	outline-width: 0;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+	outline: none;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: var(--text_placeholder);
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: var(--text_placeholder);
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: var(--text_placeholder);
+}
+
+.app{
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	left:0;
+	top: 0;
+	overflow: hidden;
+	box-sizing: border-box;
+}
+
+.view{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	left:0;
+	top: 0;
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch; 
+	box-sizing: border-box;
+}
+
+.viewModal{
+	width: 100%;
+	height: 100vh;
+	background: var(--background_default);
+	position: fixed;
+	left:0;
+	top: 100vh;
+	transition: 0.4s top;
+}
+
+.viewStory{
+	width: 100%;
+	height: 100vh;
+	background: var(--background_default);
+	position: fixed;
+	left:100vw;
+	top: 0;
+	transition: 0.4s left;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch; 
+}
+
+.closeButon{
+	width: 27px;
+	height: 27px;
+	display: block;
+	position: absolute;
+	left: 30px;
+	top: 30px;
+}
+
+.backButon{
+	width: 27px;
+	height: 27px;
+	display: block;
+	position: absolute;
+	left: 30px;
+	top: 30px;
+}
+
+.gearButton{
+	width: 27px;
+	height: 27px;
+	display: block;
+	position: absolute;
+	right: 30px;
+	top: 30px;
+}
+
+.moreButton{
+	width: 27px;
+	height: 27px;
+	display: block;
+	position: absolute;
+	right: 30px;
+	top: 30px;
+	display: block;
+}
+
+.addButtonWide{
+	width: 24px;
+	height: 24px;
+	display: block;
+	position: absolute;
+	right: 30px;
+	top: 31px;
+}
+
+.submitButton{
+	width: 27px;
+	height: 27px;
+	display: block;
+	position: absolute;
+	right: 30px;
+	top: 30px;
+	opacity: 0.2;
+}
+
+.importButton{
+	width: 27px;
+	height: 27px;
+	display: block;
+	position: absolute;
+	right: 70px;
+	top: 30px;
+}
+
+.exportButton{
+	width: 27px;
+	height: 27px;
+	display: block;
+	position: absolute;
+	right: 30px;
+	top: 30px;
+}
+
+.title{
+	font-size: 32px;
+	font-weight: 600;
+	line-height: 32px;
+	padding-left: 12px;
+	padding-top: 100px;
+	box-sizing: border-box;
+	height: 160px;
+	margin: auto;
+	color: var(--text_default);
+}
+
+.noTitle{
+	padding-left: 12px;
+	padding-top: 100px;
+	box-sizing: border-box;
+	height: 90px;
+	margin: auto;
+}
+
+.collection{
+	text-align: left;
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%);
+	top: 180px;
+	min-height: calc(100vh - 295px);
+	padding-bottom: 140px;
+}
+
+.content{
+	text-align: left;
+	padding-bottom: 140px;
+	margin: auto;
+	padding-top: 120px;
+}
+
+.viewListContent{
+	text-align: left;
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%);
+	top: 180px;
+	height: calc(100vh - 310px);
+	color:var(--text_default);
+}
+
+.viewListContent a{
+	color: var(--text_default);
+}
+
+.cell{
+	background-color: var(--background_default);
+	display: inline-block;
+	border-radius: 40%;
+	overflow: hidden;
+	/*box-shadow: 0px 0px 20px 10px var(--shadow_cell);*/
+	position: relative;
+	box-sizing: border-box;
+	vertical-align:top;
+	width: calc(50vw - 25px);
+	height: calc(50vw - 25px);
+	max-width: 150px;
+	max-height: 150px;
+	margin: 10px;
+	background-color: var(--shadow_cell);
+}
+
+.cell a{
+	width: 100%;
+	height: 100%;
+	display: block;
+	position: absolute;
+	border-radius: 20px;
+	overflow: hidden;
+}
+
+.cell a:hover{
+	cursor: pointer;
+}
+
+.cellIcon{
+	width: 25px;
+	height: 25px;
+	display: block;
+	position: absolute;
+	overflow: hidden;
+	right: calc(50% - 12.5px);
+	top: calc(50% - 35px);
+	right: 30px;
+	top: 30px;
+	pointer-events: none;
+}
+
+.cellTitle{
+	font-family: Montserrat-SemiBold;
+	width: 135px;
+	width: 100px;
+	height: 20px;
+	display: block;
+	position: absolute;
+	overflow: hidden;
+	left: 8px;
+	left: 30px;
+	bottom: 54px;
+	font-size: 16px;
+	color: var(--text_default);
+	pointer-events: none;
+	box-sizing: border-box;
+	text-align: left;
+}
+
+.cellTitleDouble{
+	font-family: Montserrat-SemiBold;
+	width: 135px;
+	width: 100px;
+	height: 44px;
+	line-height: 22px;
+	display: block;
+	position: absolute;
+	overflow: hidden;
+	left: 8px;
+	left: 30px;
+	bottom: 34px;
+	font-size: 16px;
+	color: var(--text_default);
+	pointer-events: none;
+	box-sizing: border-box;
+	text-align: left;
+}
+
+.cellTitleSolo{
+	font-family: Montserrat-SemiBold;
+	width: 100px;
+	height: 20px;
+	display: block;
+	position: absolute;
+	overflow: hidden;
+	left: 30px;
+	bottom: 32px;
+	font-size: 16px;
+	color: var(--text_default);
+	pointer-events: none;
+	box-sizing: border-box;
+	text-align: left;
+}
+
+.cellSubtitle{
+	font-family: Montserrat-Medium;
+	width: 100px;
+	height: 20px;
+	display: block;
+	position: absolute;
+	overflow: hidden;
+	left: 30px;
+	bottom: 30px;
+	font-size: 14px;
+	color: var(--text_subtitle);
+	pointer-events: none;
+	box-sizing: border-box;
+	text-align: left;
+}
+
+.viewCover{
+	width: 100vw;
+	height: 100vh;
+	display: block;
+	position: fixed;
+	left: 0;
+	top: 0;
+	background: var(--design_cover);
+
+	pointer-events: none;
+	opacity: 0;
+	transition: opacity 0.2s linear;
+}
+
+.listNameInput{
+	background-color: var(--background_default);
+	border: 0;
+	font-size: 32px;
+	padding: 4px;
+	padding-left: 14px;
+	font-family: Montserrat-SemiBold;
+	width: calc(100% - 18px);
+	color: var(--text_default);
+}
+
+.listTimeInput{
+	background-color: var(--background_default);
+	border: 0;
+	font-size: 32px;
+	padding: 4px;
+	padding-left: 14px;
+	font-family: Montserrat-SemiBold;
+	width: calc(100% - 18px);
+	color: var(--text_default);
+	margin-top: 0px;
+}
+
+.taskInput{
+	background-color: var(--background_default);
+	border: 0;
+	font-size: 34px;
+	padding: 4px;
+	padding-left: 14px;
+	font-family: Montserrat-SemiBold;
+	width: calc(100% - 18px);
+	color: var(--text_default);
+}
+
+.options{
+	margin-left: 5px;
+	margin-top: 10px;
+	margin-bottom: 55px;
+	text-align: left;
+}
+
+.option{
+	width: 32px;
+	height: 32px;
+	display: inline-block;
+	margin: 9px;
+}
+
+.viewListOption{
+	width: 34px;
+	height: 34px;
+	display: inline-block;
+	overflow: hidden;
+}
+
+.viewListTitle{
+	width: calc(100% - 56px);
+	height: 34px;
+	display: inline-block;
+	overflow: hidden;
+	margin-left: 10px;
+	color: var(--text_default);
+	box-sizing: border-box;
+	font-size: 20px;
+	line-height: 36px;
+}
+
+.viewListSubTitle{
+	font-family: Montserrat-Medium;
+	display: block;
+	overflow: hidden;
+	padding-left: 56px;
+	color: var(--text_subtitle);
+	font-size: 10px;
+}
+
+@media (max-width:760px) { 
+	.title{
+		width: calc(100vw - 10px);
+		max-width: 340px;
+	}
+	.collection{
+		width: calc(100vw - 10px);
+		max-width: 340px;
+	}
+	.content{
+		width: calc(100vw - 10px);
+		max-width: 340px;
+	}
+	.viewListContent{
+		width: calc(100vw - 10px);
+		max-width: 340px;
+	}
+}
+
+@media (min-width:760px) { 
+	.title{
+		width: calc(100vw - 40px);
+		max-width: 1024px;
+	}
+	.collection{
+		width: calc(100vw - 40px);
+		max-width: 1024px;
+		max-width: 850px;
+	}
+	.content{
+		width: calc(100vw - 40px);
+		max-width: 1024px;
+	}
+	.viewListContent{
+		width: calc(100vw - 40px);
+		max-width: 1024px;
+	}
+}
+
+.logo{
+	width: 47px;
+	height: 47px;
+	display: block;
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	box-sizing: border-box;
+}
+
+.logo img{
+	display: block;
+	width: 100%;
+	height: 100%;
+	opacity: 0.9;
+}
+
+.copyBox{
+	padding: 40px;
+	margin-top: 80px;
+}
+
+a{
+	text-decoration: none;
+	color: var(--text_subtitle);
+}
+
+.dreamCatcherFactoryInfo{
+	width: calc(100% - 22px);
+	margin: auto;
+	color: var(--text_default);
+}
+
+.dreamCatcherFactoryInfo span{
+	color: var(--text_subtitle);
+}
+
+.dreamCatcherInfoRow{
+	height: 22px;
+	margin-top: 5px;
+	color: var(--text_subtitle);
+	margin-left: 4px;
+	opacity: = 0.0;
+	transition: 0.2s ease-in-out;
+}
+
+.dreamCatcherInfoRowLong{
+	height: 22px;
+	font-size: 9px;
+	margin-top: 5px;
+	color: var(--text_subtitle);
+	margin-left: 4px;
+	opacity: = 0.0;
+	transition: 0.4s ease-in-out;
+}
+
+.nav{
+	border-top: 1px solid rgba(0,0,0, 0.05);
+	background-color: rgba(0,0,0, 0.2);
+	width: 100%;
+	height: 70px;
+	display: block;
+	position: fixed;
+	box-sizing: border-box;
+	bottom: 0;
+	left: 0;
+	text-align: center;
+	-webkit-backdrop-filter: blur(20px);
+	backdrop-filter: blur(20px);
+}
+
+.navButtons{
+	border: 0px solid rgba(0,0,0, 0.6);
+	width: 100%;
+	max-width: 1024px;
+	height: 70px;
+	box-sizing: border-box;
+	margin: auto;
+	display: inline-block;
+}
+
+.navButtonSpace{
+	border: 0px solid rgba(0,0,0, 0.6);
+	width: 20%;
+	height: 60px;
+	box-sizing: border-box;
+	margin: auto;
+	display: inline-block;
+	text-align: center;
+}
+
+.navButton{
+	border: 0px solid rgba(0,0,0, 0.6);
+	width: 60px;
+	height: 60px;
+	box-sizing: border-box;
+	margin: auto;
+	display: inline-block;
+	text-align: center;
+}
+
+.navButton a{
+	width: 60px;
+	height: 60px;
+	display: block;
+	margin-top: 4px;
+}
+
+.navButton img{
+	width: calc(100% - 12px);
+	height: calc(100% - 12px);
+	padding: 6px;
+}
+
+.main{
+}
+
+.tab img{
+	width: calc(100% - 24px);
+	height: calc(100% - 24px);
+	padding: 12px;
+}
+
+.tab{
+	opacity: 0.3;
+}
+
+.viewNavBar{
+	width: 100%;
+	height: 72px;
+	box-sizing: border-box;
+	position: fixed;
+	left: 0;
+	top: 0;
+	transition: 0.2s ease-in-out;
+	opacity: 0;
+	display: none;
+
+	-webkit-backdrop-filter: blur(20px);
+	backdrop-filter: blur(20px);
+	z-index: 99999;
+}
+
+.socialLinks{
+	width: 100%;
+	height: auto;
+	text-align: center;
+	display: block;
+	margin-top: 100px;
+	display: none;
+}
+.socialLink{
+	width: 60px;
+	height: 60px;
+	display: inline-block;
+	margin: auto;
+	opacity: 0.1;
+}
+.socialLink a{
+	text-decoration: none;
+	color: var(--text_default);
+	letter-spacing: 2px;
+	font-size: 8px;
+}
+.socialLink img{
+	width: 60px;
+	height: 60px;
+	display: block;
+}
+
+.formLabel{
+	width: 100px;
+	height: 36px;
+	line-height: 30px;
+	display: inline-block;
+	text-align: left;
+}
+
+.formInput{
+	width: 160px;
+	height: 40px;
+	display: inline-block;
+	text-align: left;
+	padding: 14px;
+	box-sizing: border-box;
+	border: 1px solid #999;
+}
+
+.buttons{
+	display: block;
+	text-align: center;
+	margin-top: 40px;
+}
+
+.button{
+	display: inline-block;
+	width: 100px;
+	height: 40px;
+	margin: 10px;
+}
+
+.button a{
+	display: block;
+	width: 100px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	border-radius: 14px;
+	background-color: #999999;
+	color: #ffffff;
+}
+
+.button a:hover{
+	background-color: #333333;
+	color: #ffffff;
+}
+
+.buttonSmall{
+	display: block;
+	width: 220px;
+	height: 28px;
+	margin: auto;
+	margin-top: 30px;
+}
+
+.buttonSmall a{
+	display: block;
+	width: 220px;
+	height: 28px;
+	line-height: 28px;
+	text-align: center;
+	border-radius: 14px;
+	color: #666666;
+	border: 1px solid #666666;
+}
+
+.buttonSmall a:hover{
+	color: #333333;
+	border: 1px solid #333333;
+}
