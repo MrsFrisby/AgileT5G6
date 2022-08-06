@@ -7,8 +7,9 @@
 // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // 
 // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // 
 // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // //
-	
-function userSignUp(){
+
+// This function starts the user sign-up process
+function actionUserSignUp(){
 	
 	let userName = document.getElementById('enterName').value;
 	let userEmail = document.getElementById('enterEmail').value;
@@ -25,84 +26,48 @@ function userSignUp(){
 		alert("You need to enter an email and a password");
 	} else {
 		console.log("Let's sign up!");
-		document.getElementById('enterName').value = "";
-		document.getElementById('enterEmail').value = "";
-		document.getElementById('enterPassword').value = "";
 		
-		alert("The end-point needs to be secure https");
-		
-		// Below is the code for creating new user's in the app but the end-point needs to be secure https
-		/*
 		// Params object
 		var paramsObject = new Object();
 		paramsObject.email = userEmail;
 		paramsObject.password = userPassword;
 		paramsObject.name = userName;
-
+		
 		// Turn the data object into an array of URL-encoded key/value pairs.
-		let urlEncodedData = "", urlEncodedDataPairs = [], name;
-		for( name in params ) {
-			urlEncodedDataPairs.push(encodeURIComponent(name)+'='+encodeURIComponent(params[name]));
-		}
+		var urlEncodedDataPairs = urlEncodedDataPairs = 'name='+paramsObject.name+'&email='+paramsObject.email+'&password='+paramsObject.password;
 		
-		// Make the network request
-		let url = "https://13.41.73.111:8000/api/user/create";
-		
-		var http = new XMLHttpRequest();
-
 		var params = urlEncodedDataPairs;
 		
+		// Make the network request
+		let url = "https://galaxie.link/api/user/create/";
+		
+		var http = new XMLHttpRequest();		
 		http.open('POST', url, true);
-
-		// Send the proper header information along with the request
 		http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-
-		http.onreadystatechange = function() {//Call a function when the state changes.
-			if(http.readyState == 4 && http.status == 200) {
-				//success(JSON.parse(http.responseText));
-				callback_SignUp(null, http.response);
+		http.send(params);
+		
+		http.onreadystatechange = function() {
+						
+			if(http.readyState == 4 && http.status == 201) {
+				
+				console.log('Signup Response: ');
+				console.log(http.response)
+				
+				// Now let's get the token!
+				console.log("Let's get the token!");
+				userAuth(paramsObject.email, paramsObject.password);
+				
 			} else {
-				callback_SignUp(http.status, http.response);
+				if(http.status == 400){
+				   alert("Oops something is wrong. Please check your details and try again.");
+				}   
 			}
 		}
-		http.send(params);
-		*/
 	}
 }
-	
-function callback_SignUp(status, response){
-	
-	console.log("Status: ");
-	console.log(status);
-	
-	console.log("Response: ");
-	console.log(response);
-}
-	
-function userForgottenPassword(){
-	
-	let userName = document.getElementById('enterName').value;
-	let userEmail = document.getElementById('enterEmail').value;
-	let userPassword = document.getElementById('enterPassword').value;
-	
-	if(
-		!userEmail || 
-		userEmail == "" || 
-		userEmail == " " || 
-		!userPassword || 
-		userPassword == "" || 
-		userPassword == " " 
-	){
-		alert("You need to enter an email and a password");
-	} else {
-		alert("An email has been sent to you with further insructions");
-		document.getElementById('enterName').value = "";
-		document.getElementById('enterEmail').value = "";
-		document.getElementById('enterPassword').value = "";
-	}
-}
-	
-function userLogInOut(){
+
+// This function starts the user log-in process
+function actionUserLogInOut(){
 	
 	if (user.isLoggedIn == true){
 		userLogOut();
@@ -122,23 +87,160 @@ function userLogInOut(){
 		){
 		    alert("You need to enter an email and a password");
 		} else {
-			userLogIn();
+			
+			// Let's get the token!
+			console.log("Let's get the token!");
+			userAuth(userEmail, userPassword);
+		}
+	}
+}
+
+// To Do: This function will start the 'Forgotten Password' process
+function userForgottenPassword(){
+	
+	alert("ToDo: This function is coming soon!");
+	
+	let userName = document.getElementById('enterName').value;
+	let userEmail = document.getElementById('enterEmail').value;
+	let userPassword = document.getElementById('enterPassword').value;
+	
+//	if(
+//		!userEmail || 
+//		userEmail == "" || 
+//		userEmail == " " || 
+//		!userPassword || 
+//		userPassword == "" || 
+//		userPassword == " " 
+//	){
+//		alert("You need to enter an email and a password");
+//	} else {
+//		alert("An email has been sent to you with further insructions");
+//		document.getElementById('enterName').value = "";
+//		document.getElementById('enterEmail').value = "";
+//		document.getElementById('enterPassword').value = "";
+//	}
+}
+
+// This function fetches an auth token
+function userAuth(userEmail, userPassword){
+	
+	// Params object
+	var paramsObject = new Object();
+	paramsObject.email = userEmail;
+	paramsObject.password = userPassword;
+
+	// Turn the data object into an array of URL-encoded key/value pairs.
+	var urlEncodedDataPairs = urlEncodedDataPairs = 'email='+paramsObject.email+'&password='+paramsObject.password;
+	var params = urlEncodedDataPairs;
+
+	// Make the network request
+	let url = "https://galaxie.link/api/user/token/";
+
+	var http = new XMLHttpRequest();
+	http.open('POST', url, true);
+	http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	http.send(params);
+
+	http.onreadystatechange = function() {
+		if(http.readyState == 4 && http.status == 200) {
+			//alert("Logged-in with auth token");
+			callback_Auth(http.response);
+		} else {
+			//console.log("Auth status change: ");
+			//console.log(http.response);
+
+			if(http.status == 400){
+				alert("Oops something is wrong. Please check your details and try again.");
+			} 
+		}
+	}
+}
+
+// This function handles the auth token response
+function callback_Auth(response){
+	
+	if(response){
+		
+		//console.log("Auth Response: ");
+		//console.log(response);
+		
+		let responseObject = JSON.parse(response);
+		let userToken = responseObject.token;
+		
+		console.log("Let's get the user!");
+		console.log("With token: "+userToken);
+
+		// Make the network request
+		let url = "https://galaxie.link/api/user/me/";
+
+		var http = new XMLHttpRequest();
+		http.open('GET', url, true);
+		http.setRequestHeader('Content-type', 'application/json');
+		http.setRequestHeader('Authorization', 'Token '+userToken); 
+		http.send();
+		
+		http.onreadystatechange = function() {
+			
+			//console.log('Auth call back: ');
+			//console.log(http.status);
+			//console.log(http.response);
+			
+			if(http.readyState == 4 && http.status == 200) {
+				
+				// We got the token
+				callback_LogIn(http.response, userToken);
+			} else {
+				//console.log('Get user status change');
+				//console.log(http.response);
+				
+				if(http.status == 400){
+					alert("Oops something is wrong. Please check your details and try again.");
+				} 
+				
+				else if(http.status == 401){
+					//alert("Oops something is wrong. Please check your details and try again.");
+					alert("There is something wrong with the auth token");
+				} 
+			}
 		}
 	}
 }
 	
-function userLogIn(){
+// This function handles the log-in response
+function callback_LogIn(response, userToken){
+	
+	if(response){
+		
+		console.log("Login Response: ");
+		console.log(response);
+	  
+		let responseObject = JSON.parse(response);
+		userLogIn(responseObject.name, responseObject.email, userToken);
+	}
+}
+	
+// This function logs a user in
+function userLogIn(userEmail, userName, userToken){
 	
 	user.isLoggedIn = true;
+	user.name = userName;
+	user.emailAddress = userEmail;
+	user.token = userToken;
 	saveUserAsCookie();
+	
 	uiDrawProfileView();
-	alert("Welcome!\nYou are now logged in");
+	
+	alert("Welcome!");
+	
+	document.getElementById('userName').value = userName;
+	document.getElementById('userEmail').value = userEmail;
 	
 	document.getElementById('enterName').value = "";
 	document.getElementById('enterEmail').value = "";
 	document.getElementById('enterPassword').value = "";
 }
 	
+// This function logs a user out
 function userLogOut(){
 	
 	user.isLoggedIn = false;
@@ -163,7 +265,6 @@ function uiDrawProfileView(){
 		document.getElementById('userSignUpButtonContainer').style.display = "none";
 		document.getElementById('userForgottenPasswordButtonContainer').style.display = "none";
 		
-		
 	} else {
 		
 		document.getElementById('userLogInOutButton').innerHTML = "Log In";
@@ -178,9 +279,10 @@ function uiDrawProfileView(){
 	
 // User object
 var user = {
-	isLoggedIn : false,
-	name : "New guest",
-	emailAddress : ""
+	isLoggedIn: false,
+	name: "New guest",
+	emailAddress: "",
+	token: ""
 }
 
 // // // Cookie Data Functions // // // 
