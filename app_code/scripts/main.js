@@ -220,7 +220,7 @@ function callback_LogIn(response, userToken){
 }
 	
 // This function logs a user in
-function userLogIn(userEmail, userName, userToken){
+function userLogIn(userName, userEmail, userToken){
 	
 	user.isLoggedIn = true;
 	user.name = userName;
