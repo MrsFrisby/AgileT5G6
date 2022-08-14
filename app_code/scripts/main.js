@@ -95,6 +95,75 @@ function actionUserLogInOut(){
 	}
 }
 
+function actionSubmitDream(){
+	
+	if (user.isLoggedIn != true){
+		alert('Please log-in or create a new account first');
+	} else {
+		
+		let dreamTitle = document.getElementById('submitDreamTitle').value;
+		let dreamDescription = document.getElementById('submitDreamDescription').value;
+		
+		if(
+			!dreamTitle || 
+			dreamTitle == "" || 
+			dreamTitle == " " || 
+			!dreamDescription || 
+			dreamDescription == "" || 
+			dreamDescription == " " 
+		){
+			alert("You need to enter a title and a description");
+		} else {
+			
+			// Let's post this dream to the API
+			console.log("Let's log this dream!");
+			submitDream(dreamTitle, dreamDescription);
+		}
+	}	
+}
+
+function submitDream(dreamTitle, dreamDescription){
+	
+	// Create a URL-encoded key/value pairs.
+	var urlEncodedDataPairs = urlEncodedDataPairs = 'dream_app_uid='+user.userId+'&title='+dreamTitle+'&description='+dreamDescription;
+	var params = urlEncodedDataPairs;
+
+	// Make the network request
+	let url = "https://galaxie.link/api/dream/dreams/";
+
+	var http = new XMLHttpRequest();
+	http.open('POST', url, true);
+	http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	http.send(params);
+
+	http.onreadystatechange = function() {
+		
+		//console.log("Submit response: ");
+		//console.log(http.response);
+		
+		if(http.readyState == 4 && http.status == 200) {
+			//console.log("Submit dream status 200: "); 
+			//console.log(http.response);
+			
+			callback_Auth(http.response);
+		} else {
+			//console.log("Submit dream status change: ");
+			//console.log(http.response);
+
+			if(http.status == 400){
+				alert("Oops something is wrong. Please check your details and try again.");
+			} else {
+				
+				if(http.response && http.response!="" && http.response!= " "){
+					document.getElementById('submitDreamTitle').value = "";
+					document.getElementById('submitDreamDescription').value = "";
+					document.getElementById('submitDreamMessage').innerHTML = "Your dream log was submitted!";
+				}
+			} 
+		}
+	}
+}
+
 // To Do: This function will start the 'Forgotten Password' process
 function userForgottenPassword(){
 	
@@ -215,16 +284,17 @@ function callback_LogIn(response, userToken){
 		console.log(response);
 	  
 		let responseObject = JSON.parse(response);
-		userLogIn(responseObject.name, responseObject.email, userToken);
+		userLogIn(responseObject.name, responseObject.email, responseObject.id, userToken);
 	}
 }
 	
 // This function logs a user in
-function userLogIn(userName, userEmail, userToken){
+function userLogIn(userName, userEmail, userId, userToken){
 	
 	user.isLoggedIn = true;
 	user.name = userName;
 	user.emailAddress = userEmail;
+	user.userId = userId;
 	user.token = userToken;
 	saveUserAsCookie();
 	
@@ -276,10 +346,135 @@ function uiDrawProfileView(){
 		document.getElementById('userForgottenPasswordButtonContainer').style.display = "block";
 	}
 }
+
+// This function is now deprecated and replaced with a new method that calls a different end-point
+function initDreamsDisplay_deprecated(){
+	
+	let fetchNumberOfDreams = 25;
+	var currentDreamId = 1;
+	
+	document.getElementById('dreamsDisplay').innerHTML = '';
+	
+	// Hack until the database set-tup supports getting all entries or latest 100
+	function fetchDream(currentDreamIdPassed){
+	
+		// Make the network request
+		let url = "https://galaxie.link/api/dream/dreams/"+currentDreamIdPassed;
+
+		var http = new XMLHttpRequest();
+		http.open('GET', url, true);
+		http.setRequestHeader('Content-type', 'application/json');
+		http.send(null);
+		console.log("Get dream: "+currentDreamIdPassed);
+		
+		http.onreadystatechange = function() {
+
+			//console.log(http.response);
+
+			if(http.readyState == 4 && http.status == 200) {
+	
+				if(http.response && http.response!="" && http.response!= " "){
+						
+					let responseObject = JSON.parse(http.response);
+					let dreamTitle = responseObject.title;
+					let dreamDescription = responseObject.description;
+					let userId = responseObject.dream_app_uid;
+					
+					let titleHTML = '<p><strong><div class="displayDreamRowTitle">'+dreamTitle+' (by user id: '+userId+')<div></strong></p>';
+					let descriptionHTML = '<div class="displayDreamRowDescription">'+dreamDescription+'<div>';
+					
+					let rowHTML = '<div class="displayDreamRow">'+titleHTML+descriptionHTML+'</div><br>';
+					
+					document.getElementById('dreamsDisplay').innerHTML += rowHTML;
+						
+					if(currentDreamId<fetchNumberOfDreams){
+						currentDreamId++;
+						
+						setTimeout(function(){
+							fetchDream(currentDreamId);
+						}, 250);
+					}
+				}
+			} 
+		}
+	}
+	
+	setTimeout(function(){
+		fetchDream(currentDreamId);
+	}, 250);
+}
+
+function initDreamsDisplay(){
+	
+	document.getElementById('dreamsDisplay').innerHTML = '';
+	
+	// Make the network request
+	let url = "https://galaxie.link/api/dream/dreams/";
+
+	var http = new XMLHttpRequest();
+	http.open('GET', url, true);
+	http.setRequestHeader('Content-type', 'application/json');
+	http.send(null);
+
+	http.onreadystatechange = function() {
+
+		//console.log(http.response);
+
+		if(http.readyState == 4 && http.status == 200) {
+			
+			let dreams = JSON.parse(http.response);
+			
+			for(var i=0; i<dreams.length; i++){
+				
+				let responseObject = dreams[i];
+				let userId = responseObject.dream_app_uid;
+				
+				if(userId == user.userId){
+
+					
+					let dreamTitle = responseObject.title;
+					let dreamDescription = responseObject.description;
+					let createdAt = responseObject.created_at;
+
+					// Split date format
+					// e.g. ["2022","08","14","06","17","07.891979Z"]
+					var t = createdAt.split(/[-T:]/);
+
+					console.log(JSON.stringify(t));
+
+					// Remove final part (after last dot)
+					var part5 = t[5];
+					var tt = part5.split(/[.]/);
+
+					// e.g. "2010-06-09 13:12:01"
+					var jsDateFormat = t[0]+'-'+ t[1]+'-'+t[2]+' '+t[3]+':'+t[4]+':'+tt[0];
+
+					// JS date - use this one for even better formatting
+					var jsd = new Date(Date.UTC(t[0], t[1]-1, t[2], t[3], t[4], tt[0]));
+					console.log(jsd);
+
+					// Apply each element to the Date function
+
+					var createdAtFormatted = t[2]+'-'+t[1]+'-'+t[0]+' at '+t[3]+':'+t[4];
+				
+					let titleHTML = '<div class="displayDreamRowTitle">'+dreamTitle+'</div>';
+					let dateHTML = '<div class="displayDreamDate">Logged:<br>'+jsd+'</div>';
+					let descriptionHTML = '<div class="displayDreamRowDescription">'+dreamDescription+'</div>';
+					
+					let rowHTML = '<div class="displayDreamRow">'+titleHTML+dateHTML+descriptionHTML+'</div><br>';
+
+					document.getElementById('dreamsDisplay').innerHTML += rowHTML;
+				
+				}
+			}
+		} 
+	}
+}
 	
 // User object
 var user = {
 	isLoggedIn: false,
+	userId:"",
 	name: "New guest",
 	emailAddress: "",
 	token: ""
@@ -375,6 +570,7 @@ function openStory(viewId){
 	if(viewId=='view_tab_2'){
 		document.getElementById('nav_tab_2').style.display = 'block';
 		setTimeout(function(){
+			initDreamsDisplay();
 			document.getElementById('nav_tab_2').style.opacity = '1';
 		},500);
 	}
@@ -418,6 +614,7 @@ function closeStory(viewId){
 		document.getElementById('nav_tab_2').style.opacity = '0';
 		setTimeout(function(){
 			document.getElementById('nav_tab_2').style.display = 'none';
+			document.getElementById('dreamsDisplay').innerHTML = '';
 		},500);
 	}
 	
@@ -425,6 +622,7 @@ function closeStory(viewId){
 		document.getElementById('nav_tab_4').style.opacity = '0';
 		setTimeout(function(){
 			document.getElementById('nav_tab_4').style.display = 'none';
+			document.getElementById('submitDreamMessage').innerHTML = "";
 		},500);
 	}
 	
