@@ -137,7 +137,6 @@ function submitDream(dreamTitle, dreamDescription){
 	http.send(params);
 
 	http.onreadystatechange = function() {
-		
 		//console.log("Submit response: ");
 		//console.log(http.response);
 		
@@ -314,6 +313,11 @@ function userLogIn(userName, userEmail, userId, userToken){
 function userLogOut(){
 	
 	user.isLoggedIn = false;
+	user.userId = "";
+	user.name = "";
+	user.emailAddress = "";
+	user.token = "";
+	
 	saveUserAsCookie();
 	uiDrawProfileView();
 	alert("You are now logged out");
@@ -406,6 +410,8 @@ function initDreamsDisplay_deprecated(){
 
 function initDreamsDisplay(){
 	
+	console.log(user);
+	
 	document.getElementById('dreamsDisplay').innerHTML = '';
 	
 	// Make the network request
@@ -435,6 +441,7 @@ function initDreamsDisplay(){
 					let dreamTitle = responseObject.title;
 					let dreamDescription = responseObject.description;
 					let createdAt = responseObject.created_at;
+					let dreamUID = responseObject.dream_app_uid;
 
 					// Split date format
 					// e.g. ["2022","08","14","06","17","07.891979Z"]
@@ -457,7 +464,7 @@ function initDreamsDisplay(){
 
 					var createdAtFormatted = t[2]+'-'+t[1]+'-'+t[0]+' at '+t[3]+':'+t[4];
 				
-					let titleHTML = '<div class="displayDreamRowTitle">'+dreamTitle+'</div>';
+					let titleHTML = '<div class="displayDreamRowTitle">'+dreamTitle+' (User ID: '+dreamUID+' )</div>';
 					let dateHTML = '<div class="displayDreamDate">Logged:<br>'+jsd+'</div>';
 					let descriptionHTML = '<div class="displayDreamRowDescription">'+dreamDescription+'</div>';
 					
@@ -570,7 +577,13 @@ function openStory(viewId){
 	if(viewId=='view_tab_2'){
 		document.getElementById('nav_tab_2').style.display = 'block';
 		setTimeout(function(){
-			initDreamsDisplay();
+			
+			if(user.isLoggedIn == true){
+			   initDreamsDisplay();
+			} else { 
+				alert('Please log-in first');
+			}
+			
 			document.getElementById('nav_tab_2').style.opacity = '1';
 		},500);
 	}
