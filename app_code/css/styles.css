@@ -670,6 +670,17 @@ a{
 	border: 1px solid #999;
 }
 
+.formTextArea{
+	font-family: Montserrat-Medium;
+	width: 160px;
+	height: 160px;
+	display: inline-block;
+	text-align: left;
+	padding: 14px;
+	box-sizing: border-box;
+	border: 1px solid #999;
+}
+
 .buttons{
 	display: block;
 	text-align: center;
@@ -721,4 +732,30 @@ a{
 .buttonSmall a:hover{
 	color: #333333;
 	border: 1px solid #333333;
+}
+
+.displayDreamRow{
+	border: 1px solid #777;
+	border-radius: 10px;
+	padding: 10px;
+	margin: 20px;
+	margin-bottom: 10px;
+}
+
+.displayDreamRowTitle{
+	font-size: 18px;
+	margin: 10px;
+}
+
+.displayDreamDate{
+	font-size: 11px;
+	margin: 10px;
+	color: #444;
+	line-height: 15px;
+}
+
+.displayDreamRowDescription{
+	font-size: 15px;
+	margin: 10px;
+	margin-top: 20px;
 }
