@@ -3,7 +3,7 @@
 
 //
 //  index.html
-//  DreamCatcher
+//  Oneiro
 //
 //  Created by Jason Hadjioannou on 10/07/2022.
 //
@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Project DreamCatcher</title>
+<title>Project Oneiro</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 	
 <script src="scripts/header.js?v=1"></script>
@@ -30,7 +30,7 @@
 			<div class="dreamCatcherFactoryInfo" align="center">
 				<img src="images/logo_b_alpha.png" width="100" height="100" alt="dreamCatcher" title="dreamCatcher">
 				<br><br>
-				<h1>Project DreamCatcher</h1>
+				<h1>Project Oneiro</h1>
 				<p></p>
 			</div>
 		</div>
@@ -101,6 +101,7 @@
 				<br><br>
 				<h1>Tab 2</h1>
 				<p></p>
+				<div id="dreamsDisplay"></div>
 			</div>
 		</div>
 	</div>
@@ -114,8 +115,30 @@
 			<div class="dreamCatcherFactoryInfo" align="center">
 				<img src="images/tab_i.png" width="100" height="100" alt="dreamCatcher" title="dreamCatcher">
 				<br><br>
-				<h1>Tab 4</h1>
+				
+				<h1>Log a Dream</h1>
 				<p></p>
+				
+				<br>
+				
+				<div id="submitDreamForm">
+					<p>
+						<span class="formLabel">Title:</span><br>
+						<input class="formInput" id="submitDreamTitle" type="text" name="dreamTitle" placeholder="Enter a title" value="">
+					</p>
+					<p>
+						<span class="formLabel">Description:</span><br>
+						<textarea class="formTextArea" id="submitDreamDescription" name="submitDreamDescription" placeholder="Enter a description" value=""></textarea>
+					</p>
+					<p>
+						<div id="submitDreamMessage"></div>
+					</p>
+				</div>
+				
+				<div class="buttons">
+					<div class="button"><a id="submitButton" href="#" onClick="actionSubmitDream(); return false;">Submit</a></div>
+				</div>
+				
 			</div>
 		</div>
 	</div>
