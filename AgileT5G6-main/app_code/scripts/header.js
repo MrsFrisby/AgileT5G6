@@ -24,7 +24,7 @@ if ( (typeof os_appStates !== 'undefined' && os_appStates.theme == 0) || window.
 } else {
 	theme = 1;
 	// Light theme
-	document.documentElement.style.setProperty('--background_default', '#FFE1D4');								   
+	document.documentElement.style.setProperty('--background_default', '#FFDAB9');								   
 	document.documentElement.style.setProperty('--text_default', '#483D8B');
 	document.documentElement.style.setProperty('--text_subtitle', '#5D669D');
 	document.documentElement.style.setProperty('--text_placeholder', '#FFA07A');
