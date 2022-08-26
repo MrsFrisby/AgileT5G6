@@ -680,6 +680,7 @@ a{
 	margin: auto;
 	display: inline-block;
 	text-align: center;
+	opacity: 0.3;
 }
 
 .navButton a{
@@ -702,10 +703,6 @@ a{
 	width: 100%;
 	height: 100%;
 	padding: 12px;
-}
-
-.tab{
-	opacity: 0.3;
 }
 
 .viewNavBar{
