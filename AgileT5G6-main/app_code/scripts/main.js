@@ -649,22 +649,52 @@ function closeStory(viewId){
 	
 // // // Tabs // // // 
 function buttonAction_1(){
+	document.getElementById('navButton_1').style.opacity = 1.0;
+	document.getElementById('navButton_2').style.opacity = 0.3;
+	document.getElementById('navButton_3').style.opacity = 0.3;
+	document.getElementById('navButton_4').style.opacity = 0.3;
+	document.getElementById('navButton_5').style.opacity = 0.3;
+	
 	openStory('view_tab_1');
 }
 	
 function buttonAction_2(){
+	document.getElementById('navButton_1').style.opacity = 0.3;
+	document.getElementById('navButton_2').style.opacity = 1.0;
+	document.getElementById('navButton_3').style.opacity = 0.3;
+	document.getElementById('navButton_4').style.opacity = 0.3;
+	document.getElementById('navButton_5').style.opacity = 0.3;
+	
 	openStory('view_tab_2');
 }
 	
 function buttonAction_3(){
+	document.getElementById('navButton_1').style.opacity = 0.3;
+	document.getElementById('navButton_2').style.opacity = 0.3;
+	document.getElementById('navButton_3').style.opacity = 1.0;
+	document.getElementById('navButton_4').style.opacity = 0.3;
+	document.getElementById('navButton_5').style.opacity = 0.3;
+	
 	openModal('view_main');
 }
 	
 function buttonAction_4(){
+	document.getElementById('navButton_1').style.opacity = 0.3;
+	document.getElementById('navButton_2').style.opacity = 0.3;
+	document.getElementById('navButton_3').style.opacity = 0.3;
+	document.getElementById('navButton_4').style.opacity = 1.0;
+	document.getElementById('navButton_5').style.opacity = 0.3;
+	
 	openStory('view_tab_4');
 }
 	
 function buttonAction_5(){
+	document.getElementById('navButton_1').style.opacity = 0.3;
+	document.getElementById('navButton_2').style.opacity = 0.3;
+	document.getElementById('navButton_3').style.opacity = 0.3;
+	document.getElementById('navButton_4').style.opacity = 0.3;
+	document.getElementById('navButton_5').style.opacity = 1.0;
+	
 	openStory('view_tab_5');
 }
 	
