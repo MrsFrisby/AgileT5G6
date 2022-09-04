@@ -31,7 +31,7 @@
 	--peachPuff: #FFDAb9;
 	--lightSalmon: #FFA07A;
 	--darkSlateBlue: #483D8B;
-	--NavBarBlue: #5D669D;
+	--NavBarBlue: rgba(42, 48, 87, 0.7); /*#5D669D;*/
 	--textEntryLight: #FFF7F2;
 	--salmonHover: #FF7C47;
 	--blueHover: #483D8B;
@@ -42,9 +42,9 @@ html, body{
 background-repeat: no-repeat;
 background-size: cover;
 background-position: center center;
-
-
 background-color: var(--background_default);
+background-image: linear-gradient(180deg,rgba(93,102,157,0.45), rgba(255,225,212,0.45),rgba(255,160,122,0.45));
+  
 /*background-color: #FFE1D4;*/
 margin: 0;
 padding: 0;
@@ -64,31 +64,30 @@ font-family: Nunito-Regular;
 
 /* For width smaller than 768px: */
 @media only screen and (max-width: 576px)  { 
-	body {
+	.splashCover {
 		background-image: url("../images/backgroundClouds/clouds/clouds576.jpg");
 	}
 	
 }
 
-	/* iPhone 13 Portrait */
+/* iPhone 13 Portrait */
 @media only screen and (min-width: 428px) and (orientation: portrait) { 
-	body {
+	.splashCover {
 		background-image: url("../images/backgroundClouds/clouds/clouds_iPhone13Portrait_428_926.jpg");
 	}
 	
 }
 
-
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-	body {
+	.splashCover {
 		background-image: url("../images/backgroundClouds/clouds/clouds768.jpg");
 	}
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-	body {
+	.splashCover {
 		background-image: url("../images/backgroundClouds/clouds/clouds992.jpg");
 	}
 }
@@ -96,47 +95,57 @@ font-family: Nunito-Regular;
 /* iPad Air Portrait */
 @media only screen and (min-width: 768px) and (orientation: portrait) 
 { 
-	body {
+	.splashCover {
 		background-image: url("../images/backgroundClouds/clouds/clouds_ipadAirPortrait_768_1025.jpg");
 	}
 }
 
-
 /* iPad Air Landscape */
 @media only screen and (min-width: 1024px) and (orientation: landscape) { 
-	body {
+	.splashCover {
 		background-image: url("../images/backgroundClouds/clouds/clouds1024.jpg");
 	}
 }
 
 /* iPad Pro Portrait */
 @media only screen and (min-width: 1024px) and (orientation: portrait) { 
-	body {
+	.splashCover {
 		background-image: url("../images/backgroundClouds/clouds/clouds_iPadProPortrait_1024_1366.jpg");
 	}
 }
 
 /* iPad Pro Landscape */
 @media only screen and (min-width: 1366px) and (orientation: landscape) {
-	body {
+	.splashCover {
 		background-image: url("../images/backgroundClouds/clouds/clouds1920.jpg");
 	}
 }
 
 /* Extra large devices (large laptops and desktops, 1280px and up) */
 @media only screen and (min-width: 1280px) {
-	body {
+	.splashCover {
 		background-image: url("../images/backgroundClouds/clouds/clouds1280.jpg");
 	}
 }
 
 /* HD devices (large laptops and desktops, 1920px and up) */
 @media only screen and (min-width: 1920px) {
-	body {
+	.splashCover {
 		background-image: url("../images/backgroundClouds/clouds/clouds1920.jpg");
 	}
 }
 
+h1{
+	font-size: 24px;
+}
+
+h2{
+	
+}
+
+input, textarea{
+	color:  var(--darkSlateBlue);
+}
 
 input.middle:focus {
 	outline-width: 0;
@@ -191,6 +200,9 @@ button:focus {
 	left:0;
 	top: 100vh;
 	transition: 0.4s top;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	background-image: linear-gradient(180deg,rgba(93,102,157,0.45), rgba(255,225,212,0.45),rgba(255,160,122,0.45));
 }
 
 .viewStory{
@@ -204,6 +216,7 @@ button:focus {
 	overflow-x: hidden;
 	overflow-y: scroll;
 	-webkit-overflow-scrolling: touch; 
+	background-image: linear-gradient(180deg,rgba(93,102,157,0.45), rgba(255,225,212,0.45),rgba(255,160,122,0.45));
 }
 
 .closeButon{
@@ -213,6 +226,7 @@ button:focus {
 	position: absolute;
 	left: 30px;
 	top: 30px;
+	filter: brightness(0.1) invert(1);
 }
 
 .backButon{
@@ -236,7 +250,6 @@ button:focus {
 .moreButton{
 	width: 27px;
 	height: 27px;
-	display: block;
 	position: absolute;
 	right: 30px;
 	top: 30px;
@@ -451,7 +464,6 @@ button:focus {
 	left: 0;
 	top: 0;
 	background: var(--design_cover);
-
 	pointer-events: none;
 	opacity: 0;
 	transition: opacity 0.2s linear;
@@ -665,7 +677,7 @@ a{
 .navButtonSpace{
 	border: 0px solid rgba(0,0,0, 0.6);
 	width: 20%;
-	height: 60px;
+	height: 70px;
 	box-sizing: border-box;
 	margin: auto;
 	display: inline-block;
@@ -674,35 +686,62 @@ a{
 
 .navButton{
 	border: 0px solid rgba(0,0,0, 0.6);
-	width: 60px;
-	height: 60px;
+	width: 70px;
+	height: 70px;
 	box-sizing: border-box;
 	margin: auto;
 	display: inline-block;
 	text-align: center;
-	opacity: 0.3;
+	margin-top: 2px;
 }
 
 .navButton a{
-	width: 60px;
-	height: 60px;
+	width: 70px;
+	height: 70px;
 	display: block;
-	margin-top: 4px;
+	margin-top: 0px;
+	text-align: center;
 }
 
 .navButton img{
-	width: 100%;
-	height: 100%;
-	padding: 6px;
+	width: 40px;
+	height: 40px;
+	display: block;
+	margin: auto;
+	
+	opacity: 0.3;
 }
 
 .main{
+	opacity: 1.0;
+}
+
+.main img{
+	opacity: 1.0;
+	/*filter: brightness(0.1) invert(1);*/
+	width: 46px;
+	height: 46px;
 }
 
 .tab img{
+	width: 40px;
+	height: 40px;
+}
+
+.tabLabel{
+	font-size: 9px;
 	width: 100%;
-	height: 100%;
-	padding: 12px;
+	display: block;
+	color: #ffffff;
+	margin-top: -4px;
+}
+
+.tabLabelMain{
+	font-size: 10px;
+	width: 100%;
+	display: block;
+	color: #ffffff;
+	margin-top: -4px;
 }
 
 .viewNavBar{
@@ -729,6 +768,7 @@ a{
 	margin-top: 100px;
 	display: none;
 }
+
 .socialLink{
 	width: 60px;
 	height: 60px;
@@ -736,12 +776,14 @@ a{
 	margin: auto;
 	opacity: 0.1;
 }
+
 .socialLink a{
 	text-decoration: none;
 	color: var(--text_default);
 	letter-spacing: 2px;
 	font-size: 8px;
 }
+
 .socialLink img{
 	width: 60px;
 	height: 60px;
@@ -749,15 +791,16 @@ a{
 }
 
 .formLabel{
-	width: 100px;
+	width: 100%;
 	height: 36px;
 	line-height: 30px;
 	display: inline-block;
 	text-align: left;
+	margin-left: 20px;
 }
 
 .formInput{
-	width: 160px;
+	width: calc(100% - 20px);
 	height: 40px;
 	display: inline-block;
 	text-align: left;
@@ -770,7 +813,7 @@ a{
 
 .formTextArea{
 	font-family: Nunito-Regular;
-	width: 160px;
+	width: calc(100% - 20px);
 	height: 160px;
 	display: inline-block;
 	text-align: left;
@@ -796,67 +839,66 @@ a{
 }
 
 .button a{
-	display: block;
-	width: 100px;
-	height: 40px;
-	line-height: 40px;
-	text-align: center;
-	border-radius: 20px;
-	background-color: var(--lightSalmon); /*#FFA07A;*/
-	color:  var(--darkSlateBlue); /*#483D8B*/
+    display: block;
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 20px;
+    background-color: var(--NavBarBlue); /*#FFA07A;*/
+    color:  var(--textEntryLight); /*#483D8B*/
 }
 
 .button a:hover{
-	background-color: var(--salmonHover);
-	color: var(--textEntryLight);
-	box-shadow: 0px 3px 3px var(--NavBarBlue);
+    background-color: var(--blueHover);
+    color: var(--textEntryLight);
+    box-shadow: 0px 3px 3px var(--lightSalmon);
 }
 
 .button a:active{
-	background-color: var(--salmonHover); /*#FF7C47*/
-	color: var(--textEntryLight);
-	box-shadow: 0px 3px 3px var(--NavBarBlue);
-	transform: translateY(3px);
+    background-color: var(--blueHover); /*#FF7C47*/
+    color: var(--textEntryLight);
+    box-shadow: 0px 3px 3px var(--lightSalmon);
+    transform: translateY(3px);
 }
 
 .buttonSmall{
-	display: block;
-	width: 220px;
-	height: 28px;
-	margin: auto;
-	margin-top: 30px;
+    display: block;
+    width: 220px;
+    height: 28px;
+    margin: auto;
+    margin-top: 30px;
 }
 
 .buttonSmall a{
-	display: block;
-	width: 220px;
-	height: 28px;
-	line-height: 28px;
-	text-align: center;
-	border-radius: 14px;
-	background-color: var(--NavBarBlue);
-	color: var(--textEntryLight);
+    display: block;
+    width: 220px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    border-radius: 14px;
+    background-color: var(--textEntryLight);
+    color: var(--darkSlateBlue);
 }
 
 .buttonSmall a:hover{
-	background-color: var(--blueHover); /*#483D8B*/
-	color: var(--textEntryLight);
-	box-shadow: 0px 3px 3px var(--lightSalmon);
+    background-color: var(--blueHover); /*#483D8B*/
+    color: var(--textEntryLight);
+    box-shadow: 0px 3px 3px var(--lightSalmon);
 }
 
 .buttonSmall a:active{
-	background-color: var(--blueHover);
-	color: var(--textEntryLight);
-	box-shadow: 0px 3px 3px var(--lightSalmon);
-	transform: translateY(3px);
+    background-color: var(--blueHover);
+    color: var(--textEntryLight);
+    box-shadow: 0px 3px 3px var(--lightSalmon);
+    transform: translateY(3px);
 }
 
 .displayDreamRow{
-	border: 1px solid #777;
-	border-radius: 10px;
-	padding: 10px;
-	margin: 20px;
-	margin-bottom: 10px;
+	border: 2px solid #4c3b8f;
+	border-radius: 20px;
+	padding: 20px;
+	margin-top: 20px;
 }
 
 .displayDreamRowTitle{
@@ -882,50 +924,187 @@ a{
 div.gallery {
 	background-color: var(--textEntryLight);
 	border-radius: 20px;
-	border: 1px solid var(--lightSalmon);
+	border: 2px solid var(--lightSalmon);
 	margin-bottom: 20px;
-  }
-  
-  div.gallery:hover {
-	border: 1px solid var(--salmonHover);
-  }
-  
-  div.gallery img {
-	border-radius: 20px;
+	overflow: hidden;
+}
+
+div.gallery:hover {
+	border: 2px solid var(--salmonHover);
+}
+
+div.gallery img {
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;
 	width: 100%;
 	height: auto;
-  }
-  
-  div.desc {
+}
+
+div.desc {
 	padding: 15px;
 	text-align: center;
-  }
-  
-  * {
+	height: 130px;
+	display: inline-block;
+	overflow: hidden;
+}
+
+* {
 	box-sizing: border-box;
-  }
-  
-  .responsive {
+}
+
+.responsive {
 	padding: 0 6px;
 	float: left;
 	width: 24.99999%;
-  }
-  
-  @media only screen and (max-width: 700px) {
+}
+
+@media only screen and (max-width: 700px) {
 	.responsive {
-	  width: 49.99999%;
-	  margin: 6px 0;
+		width: 49.99999%;
+		margin: 6px 0;
 	}
-  }
-  
-  @media only screen and (max-width: 500px) {
+}
+
+@media only screen and (max-width: 500px) {
 	.responsive {
-	  width: 100%;
+		width: 100%;
 	}
-  }
-  
-  .clearfix:after {
+}
+
+.clearfix:after {
 	content: "";
 	display: table;
 	clear: both;
-  }
+}
+
+.splashLogo{
+	margin-top: 140px;
+}
+
+.membersButton{
+	width: 44px;
+	height: 44px;
+	display: block;
+	position: absolute;
+	right: 20px;
+	top: 20px;
+}
+
+.membersButton img{
+	width: 44px;
+	height: 44px;
+	display: block;
+	opacity: 1;
+}
+
+.visualiseCopy{
+	padding: 8px;
+	text-align: left;
+	margin-bottom: 40px;
+}
+
+.navBar{
+	width: 100%;
+	height: 82px;
+	background-color: rgba(255,255,255,0.5);
+	-webkit-backdrop-filter: blur(20px);
+	backdrop-filter: blur(20px);
+	position: fixed;
+	top:0;
+	left:0;
+	text-align: center;
+}
+
+.navBarLogo{
+	width: 200px;
+	height: 30px;
+	margin-top: 27px;
+	display: inline-block;
+	background-image: url("../images/oneiroLogo/purple250.png");
+	background-size: contain;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+.splashCover{
+	background-color: var(--background_default);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left:0;
+	top: 0;
+	box-sizing: border-box;
+	transition: opacity 0.5s linear;
+}
+
+.trackRow{
+	border: 2px solid #4c3b8f;
+	border-radius: 20px;
+	padding: 12px;
+	color: #4c3b8f;
+	margin-bottom: 12px;
+	overflow: hidden;
+	width: 100%;
+	height: 68px;
+	display: block;
+	background-color: var(--textEntryLight);
+}
+
+.trackRowBadge{
+	border: 0px solid blue;
+	width: 62px;
+	height: 82px;
+	display: block;
+	float: left;
+}
+
+.trackRowIcon{
+	border: 0px solid blue;
+	width: 47px;
+	height: 30px;
+	display: block;
+}
+
+.trackRowLabel{
+	border: 0px solid blue;
+	width: 62px;
+	height: 20px;
+	text-align: center;
+	font-size: 9px;
+	margin-top: 2px;
+}
+
+.trackRowTitle{
+	width: auto;
+	height: 40px;
+	line-height: 40px;
+	border: 0px solid blue;
+	text-align: right;
+	float: right;
+	padding-right: 10px;
+}
+
+.trackRowScoreBig{
+	border: 0px solid blue;
+	width: 40px;
+	height: 40px;
+	background-color: #ffa07a;
+	border-radius: 50%;
+	float: right;
+	overflow: hidden;
+	text-align: center;
+	line-height: 40px;
+	font-weight: 600;
+}
+
+.errorNote{
+	color: darkred;
+	text-align: center;
+	height: 24px;
+	margin-top: 2px;
+	margin-bottom: -24px;
+	text-transform: capitalize;
+}
