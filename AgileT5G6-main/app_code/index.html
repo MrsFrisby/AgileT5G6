@@ -13,162 +13,55 @@
 <html>
 <head>
 <meta charset="UTF-8">
+	
 <title>Project Oneiro</title>
+	
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 	
-<script src="scripts/header.js?v=1"></script>
+<script src="scripts/header.js"></script>
 	
 <link rel="stylesheet" href="css/styles.css">
-
 <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
 
-	
 </head>
 <body>
-<div id="dreamCatcher_app" class="app">
+<div id="oneiro_app" class="app">
 	
-	<!-- View: View DreamCatcher App -->
+	<!-- View Default: Home -->
 	<div id="view_lists" class="view" >
-		
 		<div class="content">
 			<div class="dreamCatcherFactoryInfo" align="center">
-				<img class="logotype" src="images/oneiroLogo/sunset250Logotype.png" alt="Oneiro Logo" title="oneiroLogo">
-				<br><br>
-				<h1>Record your Dreams</h1>
-				<p></p>
+				<br><br><br><br><br><br>
+				<h1>Welcome!</h1>
+				<p>Oneiro helps you log and track your dreams</p>
 			</div>
+			<div class="buttons">
+				<a href="#" onClick="buttonAction_3(); return false;"><img src="images/icons_4s/addLight.png" width="100" height="100" title="Record a New Dream" alt="Record a New Dream"></a>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="#" onClick="buttonAction_5(); return false;"><img src="images/icons_4s/visualiseLight.png" width="100" height="100" title="Visualise your Dreams" alt="Visualise your Dreams"></a>
+			</div>
+			
 		</div>
 		<div id="view_cover" class="viewCover" ></div>
-		<div style="display: none"><input id="importFileData" type="file" name="importFileData" accept="application/json,.json" onchange="loadFile(event)" ></div>
 	</div>
 	
-	<!-- View: Main Feature -->
-	<div id="view_main" class="viewModal" >
-		
-		<div class="closeButon"><a href="#" onClick="closeModal('view_main'); return false;"><img src="images/close.png" width="100%" height="100%" alt="Close" title="Close"></a></div>
-		
-		<div class="content">
-			<div class="dreamCatcherFactoryInfo" align="center">
-				<img src="images/oneiroLogo/purple250.png" width="50%"  alt="Oneiro Logo in peach" title="Peach Oneiro Product Logo">
-				<br><br>
-				<h1>Welcome to Oneiro</h1>
-				<p></p>
-			</div>
-		</div>
-		
-	</div>
-	
-	<!-- View: Tab 1 Visualise a dream 
+	<!-- View Tab 1: Home/Reserve -->
 	<div id="view_tab_1" class="viewStory" >
 		<div id="nav_tab_1" class="viewNavBar">
 			<div class="closeButon"><a href="#" onClick="closeStory('view_tab_1'); return false;"><img src="images/back.png" width="100%" height="100%" alt="Close" title="Close"></a></div>
 		</div>
-		<div class="content">
-			<div class="dreamCatcherFactoryInfo" align="center">
-				<img src="images/largeIcons/createLarge.png" width="100"  alt="Visualise your dream icon" title="create">
-				<br><br>
-				<h1>Visualise your Dreams</h1>
-				<p>Feature coming soon</p>
-			</div>
-		</div>
-	</div> -->
-
-		<!-- View: Tab 1 Visualise a dream -->
-		<div id="view_tab_1" class="viewStory" >
-			<div id="nav_tab_1" class="viewNavBar">
-				<div class="closeButon"><a href="#" onClick="closeStory('view_tab_1'); return false;"><img src="images/back.png" width="100%" height="100%" alt="Close" title="Close"></a></div>
-			</div>
-			<div class="content">
-				<div class="dreamCatcherFactoryInfo" align="center">
-					<img src="images/largeIcons/createLarge.png" width="100"  alt="Visualise your dream icon" title="create">
-					<br><br>
-					<h1>Visualise your Dreams</h1>
-					<h2>Full feature coming soon</h2>
-					<p>Use powerful AI technology to visualise your dreams from your description.</p>
-					<h2>Image Gallery</h2>
-	
-	<h4>Sample images generated using DALL-E mini.</h4>
-	
-	<div class="responsive">
-	  <div class="gallery">
-		<img src="images/DreamImages/cat_rain.png" alt="Cat running with umbrella" width="600" height="400">
-		<div class="desc">I saw a cat with an umbrella running in the rain.</div>
-	  </div>
 	</div>
 	
-	
-	<div class="responsive">
-	  <div class="gallery">
-		<img src="images/DreamImages/elvis_classroom.png" alt="Elvis in a classroom" width="600" height="400">
-		<div class="desc">Elvis performed a concert in my classroom at school.</div>
-	  </div>
-	</div>
-	
-	<div class="responsive">
-		<div class="gallery">
-		  <img src="images/DreamImages/ghost_carwreck.png" alt="Ghostly wrecked car" width="600" height="400">
-		  <div class="desc">I saw a ghost on the road and wrecked my car.</div>
-		</div>
-	  </div>
-	
-	  <div class="responsive">
-		<div class="gallery">
-		  <img src="images/DreamImages/snakes_bath.png" alt="Snakes in the bath tub" width="600" height="400">
-		  <div class="desc">I tried to take a bath but it was full of snakes.</div>
-		</div>
-	  </div>
-	
-	<div class="responsive">
-		<div class="gallery">
-			<img src="images/DreamImages/flamingo_wedding.png" alt="Sunset wedding with flamingo bridesmaid" width="600" height="400">
-			<div class="desc">A man with a flock of flamingos gatecrashed our wedding.</div>
-		</div>
-	  </div>
-	  
-	  <div class="responsive">
-		<div class="gallery">
-			<img src="images/DreamImages/wolf_glow.png" alt="Glowing wolf" width="600" height="400">
-			<div class="desc">The earth began to quake and a giant wolf god appeared.</div>
-		</div>
-	  </div>
-	
-	  <div class="responsive">
-		<div class="gallery">
-			<img src="images/DreamImages/goat_apple.png" alt="Goat with apple" width="600" height="400">
-			<div class="desc">I was feeding an apple to a goat when all it's teeth fell out.</div>
-		</div>
-	  </div>
-	
-	  <div class="responsive">
-		<div class="gallery">
-			<img src="images/DreamImages/zebrafinch_cage.png" alt="Zebrafinch in cage" width="600" height="400">
-			  <div class="desc">I talked for hours to a kind man with a cage full of tiny zebrafinches.</div>
-		</div>
-	  </div>
-	
-	<div class="clearfix"></div>
-	
-	<div style="padding:6px;">
-	  <p>In future versions of Oneiro it will be possible to create and save images from your dream descriptions.</p>
-	  <p>Unique and often unsettling images are generated by Dall-E 2, open source software from OpenAI. 
-		  The model has been trained using millions of online images and their captions.
-		The images produced have a dreamlike quality that makes them perfect for dream visualisation.</p>
-	</div>
-	
-				</div>
-			</div>
-		</div>
-	
-	<!-- View: Tab 2 Dream Journal-->
+	<!-- View Tab 2: Journal -->
 	<div id="view_tab_2" class="viewStory" >
 		<div id="nav_tab_2" class="viewNavBar">
 			<div class="closeButon"><a href="#" onClick="closeStory('view_tab_2'); return false;"><img src="images/back.png" width="100%" height="100%" alt="Close" title="Close"></a></div>
 		</div>
 		<div class="content">
 			<div class="dreamCatcherFactoryInfo" align="center">
-				<img src="images/largeIcons/journalLarge.png" width="100" alt="Dream Journal icon" title="DreamJournal">
+				<img src="images/icons_4s/journalPeach.png" width="100" alt="Dream Journal icon" title="DreamJournal">
 				<br><br>
 				<h1>Dream Journal</h1>
 				<p></p>
@@ -177,60 +70,239 @@
 		</div>
 	</div>
 	
-	<!-- View: Tab 4 New Dream -->
+	<!-- View Tab 4: Track -->
 	<div id="view_tab_4" class="viewStory" >
 		<div id="nav_tab_4" class="viewNavBar">
 			<div class="closeButon"><a href="#" onClick="closeStory('view_tab_4'); return false;"><img src="images/back.png" width="100%" height="100%" alt="Close" title="Close"></a></div>
 		</div>
 		<div class="content">
+			
 			<div class="dreamCatcherFactoryInfo" align="center">
-				<img src="images/largeIcons/addLarge.png" width="100"  alt="Add Dream Icon" title="dreamCatcher">
-				<br><br>
 				
-				<h1>Record a New Dream</h1>
-				<p></p>
+				<img src="images/icons_4s/trackPeach.png" width="100" alt="Visualise your dreams" title="Visualise your dreams">
 				
-				<br>
+				<p>This feature is coming in V2! Below you can see what kind of things you'll soon be able to track alongside your dreams.</p>
 				
-				<div id="submitDreamForm">
-					<p>
-						<span class="formLabel">Title:</span><br>
-						<input class="formInput" id="submitDreamTitle" type="text" name="dreamTitle" placeholder="Enter a title" value="">
-					</p>
-					<p>
-						<span class="formLabel">Description:</span><br>
-						<textarea class="formTextArea" id="submitDreamDescription" name="submitDreamDescription" placeholder="Enter a description" value=""></textarea>
-					</p>
-					<p>
-						<div id="submitDreamMessage"></div>
-					</p>
+				<h1>Today</h1>
+				
+				<div class="trackRow">
+					<div class="trackRowBadge">
+						<div class="trackRowIcon"><img src="images/HomeTrack/sleep.png" width="100%" height="100%" alt="Sleep" title="Sleep"></div>
+						<div class="trackRowLabel">Sleep</div>
+					</div>
+					<div class="trackRowScoreBig">8</div>
+					<div class="trackRowTitle">11.43PM - 6.45AM</div>
 				</div>
 				
-				<div class="buttons">
-					<div class="button"><a id="submitButton" href="#" onClick="actionSubmitDream(); return false;">Submit</a></div>
+				<div class="trackRow">
+					<div class="trackRowBadge">
+						<div class="trackRowIcon"><img src="images/HomeTrack/activity.png" width="100%" height="100%" alt="Alcohol" title="Alcohol"></div>
+						<div class="trackRowLabel">Alcohol</div>
+					</div>
+					<div class="trackRowScoreBig">2</div>
+					<div class="trackRowTitle">8.45PM</div>
 				</div>
 				
+				<div class="trackRow">
+					<div class="trackRowBadge">
+						<div class="trackRowIcon"><img src="images/HomeTrack/caffeine.png" width="100%" height="100%" alt="Caffeine" title="Caffeine"></div>
+						<div class="trackRowLabel">Caffeine</div>
+					</div>
+					<div class="trackRowScoreBig">3</div>
+					<div class="trackRowTitle">7.15AM, 2.38PM</div>
+				</div>
+				
+				<div class="trackRow">
+					<div class="trackRowBadge">
+						<div class="trackRowIcon"><img src="images/HomeTrack/medication.png" width="100%" height="100%" alt="Medication" title="Medication"></div>
+						<div class="trackRowLabel">Medication</div>
+					</div>
+					<div class="trackRowScoreBig">1</div>
+					<div class="trackRowTitle">Ibuprofen 4.17PM</div>
+				</div>
+				
+				<div class="trackRow">
+					<div class="trackRowBadge">
+						<div class="trackRowIcon"><img src="images/HomeTrack/calories.png" width="100%" height="100%" alt="Calories" title="Calories"></div>
+						<div class="trackRowLabel">Calories</div>
+					</div>
+					<div class="trackRowScoreBig">3</div>
+					<div class="trackRowTitle">1450</div>
+				</div>
+				
+				<div class="trackRow">
+					<div class="trackRowBadge">
+						<div class="trackRowIcon"><img src="images/HomeTrack/activity.png" width="100%" height="100%" alt="Activity" title="Activity"></div>
+						<div class="trackRowLabel">Activity</div>
+					</div>
+					<div class="trackRowScoreBig">10</div>
+					<div class="trackRowTitle">Steps 9,345</div>
+				</div>
+				
+				<br><br><br><br>
 			</div>
 		</div>
 	</div>
 	
-	<!-- View: Tab 5 User profile -->
+	<!-- View Tab 5: Visualise -->
 	<div id="view_tab_5" class="viewStory" >
 		<div id="nav_tab_5" class="viewNavBar">
 			<div class="closeButon"><a href="#" onClick="closeStory('view_tab_5'); return false;"><img src="images/back.png" width="100%" height="100%" alt="Close" title="Close"></a></div>
 		</div>
+		
+		<div class="content">
+			<div class="dreamCatcherFactoryInfo" align="center">
+				
+				<img src="images/icons_4s/visualisePeach.png" width="100" alt="Visualise your dreams" title="Visualise your dreams">
+				
+				<h1>Visualise your Dreams</h1>
+				
+				<h2>Full feature coming soon</h2>
+				<div>Use powerful AI technology to visualise your dreams from your description.</div>
+				
+				<h2>Image Gallery</h2>
+	
+				<h4>*Generated using DALL-E mini</h4>
+
+				<div class="responsive">
+				  <div class="gallery">
+					<img src="images/DreamImages/cat_rain.png" alt="Cat running with umbrella" width="600" height="400">
+					<div class="desc">I saw a cat with an umbrella running in the rain.</div>
+				  </div>
+				</div>
+
+				<div class="responsive">
+				  <div class="gallery">
+					<img src="images/DreamImages/elvis_classroom.png" alt="Elvis in a classroom" width="600" height="400">
+					<div class="desc">Elvis performed a concert in my classroom at school.</div>
+				  </div>
+				</div>
+
+				<div class="responsive">
+					<div class="gallery">
+					  <img src="images/DreamImages/ghost_carwreck.png" alt="Ghostly wrecked car" width="600" height="400">
+					  <div class="desc">I saw a ghost on the road and wrecked my car.</div>
+					</div>
+				  </div>
+
+				  <div class="responsive">
+					<div class="gallery">
+					  <img src="images/DreamImages/snakes_bath.png" alt="Snakes in the bath tub" width="600" height="400">
+					  <div class="desc">I tried to take a bath but it was full of snakes.</div>
+					</div>
+				  </div>
+
+				<div class="responsive">
+					<div class="gallery">
+						<img src="images/DreamImages/flamingo_wedding.png" alt="Sunset wedding with flamingo bridesmaid" width="600" height="400">
+						<div class="desc">A man with a flock of flamingos gatecrashed our wedding.</div>
+					</div>
+				  </div>
+
+				  <div class="responsive">
+					<div class="gallery">
+						<img src="images/DreamImages/wolf_glow.png" alt="Glowing wolf" width="600" height="400">
+						<div class="desc">The earth began to quake and a giant wolf god appeared.</div>
+					</div>
+				  </div>
+
+				  <div class="responsive">
+					<div class="gallery">
+						<img src="images/DreamImages/goat_apple.png" alt="Goat with apple" width="600" height="400">
+						<div class="desc">I was feeding an apple to a goat when all it's teeth fell out.</div>
+					</div>
+				  </div>
+
+				  <div class="responsive">
+					<div class="gallery">
+						<img src="images/DreamImages/zebrafinch_cage.png" alt="Zebrafinch in cage" width="600" height="400">
+						  <div class="desc">I talked for hours to a kind man with a cage full of tiny zebrafinches.</div>
+					</div>
+				  </div>
+
+				<div class="clearfix"></div>
+
+				<div class="visualiseCopy">
+				  <p>In future versions of Oneiro it will be possible to create and save images from your dream descriptions.</p>
+				  <p>Unique and often unsettling images are generated by Dall-E 2, open source software from OpenAI.The model has been trained using millions of online images and their captions. The images produced have a dreamlike quality that makes them perfect for dream visualisation.</p>
+				</div>
+	
+			</div>
+		</div>
+	</div>
+
+	<!-- Navigation Tab bar -->
+	<div id="nav" class="nav"><!--
+		--><div class="navButtons"><!--
+			--><div class="navButtonSpace tab"><!--
+				--><div id="navButton_1" class="navButton"><a href="#" onClick="buttonAction_1(); return false;"><img id="navButton_1_img" src="images/tab_home.png" alt="Home" title="Home"><div class="tabLabel">Home</div></a></div><!--
+			--></div><!--
+			--><div class="navButtonSpace tab"><!--
+				--><div id="navButton_2" class="navButton"><a href="#" onClick="buttonAction_2(); return false;"><img id="navButton_2_img" src="images/tab_journal.png" alt="Journal" title="Journal"><div class="tabLabel">Journal</div></a></div><!--
+			--></div><!--
+			--><div class="navButtonSpace"><!--
+				--><div id="navButton_3" class="navButton main"><a href="#" onClick="buttonAction_3(); return false;"><img id="navButton_3_img" src="images/tab_add.png" alt="Add Dream" title="Add Dream"><div class="tabLabelMain">Add Dream</div></a></div><!--
+			--></div><!--
+			--><div class="navButtonSpace tab"><!--
+				--><div id="navButton_4" class="navButton"><a href="#" onClick="buttonAction_4(); return false;"><img id="navButton_4_img" src="images/tab_track.png" alt="Track" title="Track"><div class="tabLabel">Track</div></a></div><!--
+			--></div><!--
+			--><div class="navButtonSpace tab"><!--
+				--><div id="navButton_5" class="navButton"><a href="#" onClick="buttonAction_5(); return false;"><img id="navButton_5_img" src="images/tab_visualise.png" alt="Visualise" title="Visualise"><div class="tabLabel">Visualise</div></a></div><!--
+			--></div><!--
+		--></div>
+	</div>
+	
+	<!-- Top bar -->
+	<div class="navBar">
+		<div class="navBarLogo"></div>
+		<div class="membersButton"><a href="#" onClick="buttonAction_members(); return false;"><img src="images/user_dsb.png?v=1" alt="" title=""></a></div>
+	</div>
+	
+	<!-- Modal Tab 3: Add dream -->
+	<div id="view_modal_dream_log" class="viewModal" >
+		
+		<div class="closeButon"><a href="#" onClick="closeModal('view_modal_dream_log'); return false;"><img src="images/close.png" width="100%" height="100%" alt="Close" title="Close"></a></div>
+		
+		<div class="dreamCatcherFactoryInfo" align="center">
+			
+			<br><br>
+			<img src="images/icons_4s/addPeach.png" width="100"  alt="Add Dream Icon" title="dreamCatcher">
+
+			<h1>Record a New Dream</h1>
+
+			<div id="submitDreamForm">
+				<p>
+					<span class="formLabel">Title:</span><br>
+					<input class="formInput" id="submitDreamTitle" type="text" name="dreamTitle" placeholder="Enter a title" value="">
+				</p>
+				<p>
+					<span class="formLabel">Description:</span><br>
+					<textarea class="formTextArea" id="submitDreamDescription" name="submitDreamDescription" placeholder="Enter a description" value=""></textarea>
+				</p>
+				<p>
+					<div id="submitDreamMessage"></div>
+				</p>
+			</div>
+
+			<div class="buttons">
+				<div class="button"><a id="submitButton" href="#" onClick="actionSubmitDream(); return false;">Submit</a></div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Modal: Member User profile -->
+	<div id="view_modal_members" class="viewModal" >
+		<div class="closeButon"><a href="#" onClick="closeModal('view_modal_members'); return false;"><img src="images/close.png" width="100%" height="100%" alt="Close" title="Close"></a></div>
 		<div class="content">
 			<div class="dreamCatcherFactoryInfo" align="center">
 				<img src="images/largeIcons/profileLarge.png" width="100"  alt="Profile logo" title="profileIcon">
 				<br><br>
 				
-				<h1>Login or Create an Account</h1>
+				<h1>Log-in or Create an Account</h1>
 				<p></p>
 				
 				<div>Name: <span id="userName">-</span></div>
 				<div>Email Address: <span id="userEmail">-</span></div>
-				
-				<br><br>
 				
 				<div id="logInForm">
 					<p>
@@ -247,6 +319,8 @@
 					</p>
 				</div>
 				
+				<div id="errorNote" class="errorNote"></div>
+				
 				<div class="buttons">
 					<div class="button"><a id="userLogInOutButton" href="#" onClick="actionUserLogInOut(); return false;">Log In</a></div>
 
@@ -258,25 +332,17 @@
 			</div>
 		</div>
 	</div>
-
-	<div id="nav" class="nav"><!--
-		--><div class="navButtons"><!--
-			--><div class="navButtonSpace tab"><!--
-				--><div id="navButton_1" class="navButton"><a href="#" onClick="buttonAction_1(); return false;"><img src="images/create.png" alt="" title=""></a></div><!--
-			--></div><!--
-			--><div class="navButtonSpace tab"><!--
-				--><div id="navButton_2" class="navButton"><a href="#" onClick="buttonAction_2(); return false;"><img src="images/journal.png" alt="" title=""></a></div><!--
-			--></div><!--
-			--><div class="navButtonSpace"><!--
-				--><div id="navButton_3" class="navButton main"><a href="#" onClick="buttonAction_3(); return false;"><img src="images/oneiroLogo/Ologo_24.png" alt="" title=""></a></div><!--
-			--></div><!--
-			--><div class="navButtonSpace tab"><!--
-				--><div id="navButton_4" class="navButton"><a href="#" onClick="buttonAction_4(); return false;"><img src="images/addDream.png" alt="" title=""></a></div><!--
-			--></div><!--
-			--><div class="navButtonSpace tab"><!--
-				--><div id="navButton_5" class="navButton"><a href="#" onClick="buttonAction_5(); return false;"><img src="images/user.png" alt="" title=""></a></div><!--
-			--></div><!--
-		--></div>
+	
+	<!-- Splash cover -->
+	<div id="splashCover" class="splashCover">
+		<div class="content">
+			<div class="dreamCatcherFactoryInfo" align="center">
+				<div class="splashLogo">
+					<img class="logotype" src="images/oneiroLogo/sunset250Logotype.png" alt="Oneiro Logo" title="Oneiro Logo">
+				</div>
+				<h1>Record your Dreams</h1>
+			</div>
+		</div>
 	</div>
 	
 </div>
