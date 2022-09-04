@@ -1,14 +1,18 @@
 // JavaScript Document
 
-// Override 
+// A state object for storing the light and dark theme option setting along with other data intended for V2
 var os_appStates = { 
 	theme: 1
 };
 
+// Var for storing the light and dark theme option setting
 var theme; 
+
+// Here we will set the CSS vars for light and dark themes
 if ( (typeof os_appStates !== 'undefined' && os_appStates.theme == 0) || window.location.search.search(/[?&]theme=0(?:$|&)/) !== -1) {
-	theme = 0;
 	// Dark theme
+	theme = 0;
+	
 	document.documentElement.style.setProperty('--background_default', '#111111');
 	document.documentElement.style.setProperty('--text_default', '#fefefe');
 	document.documentElement.style.setProperty('--text_subtitle', '#666666;');
@@ -22,8 +26,9 @@ if ( (typeof os_appStates !== 'undefined' && os_appStates.theme == 0) || window.
 	document.documentElement.style.setProperty('--fadeout_cover_1', 'rgba(17,17,17,1.0)');
 
 } else {
-	theme = 1;
 	// Light theme
+	theme = 1;
+	
 	document.documentElement.style.setProperty('--background_default', '#FFDAB9');								   
 	document.documentElement.style.setProperty('--text_default', '#483D8B');
 	document.documentElement.style.setProperty('--text_subtitle', '#5D669D');
@@ -36,9 +41,11 @@ if ( (typeof os_appStates !== 'undefined' && os_appStates.theme == 0) || window.
 	document.documentElement.style.setProperty('--fadeout_cover_0', 'rgba(254,254,254,0.0)');
 	document.documentElement.style.setProperty('--fadeout_cover_1', 'rgba(254,254,254,1.0)');
 }
+
+// For debugging
 if(window.location.search.search(/[?&]theme=0(?:$|&)/)!== -1){
-	console.log('w theme a');
+	//console.log('Theme 0');
 }
 if(window.location.search.search(/[?&]theme=1(?:$|&)/)!== -1){
-	console.log('w theme b');
+	//console.log('Theme 1');
 }
